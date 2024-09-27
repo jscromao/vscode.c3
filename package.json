@@ -1,0 +1,107 @@
+{
+	"name": "vscode.c3",
+	"version": "0.1.0",
+	"description": "C3 Language support extension for VS Code",
+	"license": "Apache 2.0",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jscromao/vscode.c3.git"
+	},
+	"bugs": {
+		"url": "https://github.com/jscromao/vscode.c3/issues"
+	},
+	"homepage": "https://github.com/jscromao/vscode.c3#readme",
+	"keywords": [
+		"c3",
+		"c3lang",
+		"majoreon"
+	],
+	"author": "José Romão",
+	"publisher": "Majoreon",
+	"categories": [
+		"Programming Languages",
+		"Formatters"
+	],
+	"engines": {
+		"vscode": "^1.75.0"
+	},
+	"contributes": {
+		"languages": [
+			{
+				"id": "c3",
+				"aliases": [
+					"c3",
+					"C3"
+				],
+				"extensions": [
+					".c3"
+				],
+				"configuration": "./assets/language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "c3",
+				"scopeName": "source.c3",
+				"path": "./assets/c3.tmLanguage.json"
+			}
+		],
+		"configuration": {
+			"title": "Language Server",
+			"properties": {
+				"c3lspclient.lsp.enable": {
+					"type": "boolean",
+					"default": true,
+					"description": "Enables the language server"
+				},
+				"c3lspclient.lsp.path": {
+					"type": "string",
+					"default": null,
+					"markdownDescription": "The path to **c3-lsp** binary"
+				},
+				"c3lspclient.lsp.debug": {
+					"type": "boolean",
+					"default": true,
+					"markdownDescription": "Enables debug information logging"
+				},
+				"c3lspclient.lsp.log.path": {
+					"type": "string",
+					"default": "",
+					"description": "Saves log to specified file"
+				},
+				"c3lspclient.lsp.sendCrashReports": {
+					"type": "boolean",
+					"default": false,
+					"markdownDescription": "Sends crash reports to server to help fixing bugs."
+				},
+				"c3lspclient.lsp.diagnosticsDelay": {
+					"type": "integer",
+					"default": 2000,
+					"markdownDescription": "Delay calculation of code diagnostics after modifications in source. In milliseconds, default 2000 ms."
+				},
+				"c3lspclient.lsp.c3.version": {
+					"type": "string",
+					"default": null,
+					"markdownDescription": "Specify C3 language version. If omited, LSP will use the last version it supports."
+				},
+				"c3lspclient.lsp.c3.path": {
+					"type": "string",
+					"default": null,
+					"markdownDescription": "Path to C3C binary. Use it if not defined already in your PATH environment variable or if you want to use a different one."
+				}
+			}
+		}
+	},
+	"main": "out/extension",
+	"devDependencies": {
+		"@types/node": "^22.7.3",
+		"@types/vscode": "^1.93.0",
+		"typescript": "^5.6.2"
+	},
+	"dependencies": {
+		"vscode-languageclient": "^9.0.1"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	}
+}
